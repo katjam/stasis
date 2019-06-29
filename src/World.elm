@@ -37,7 +37,7 @@ score world =
     List.map scoreForWorldChange world
         |> List.foldl
             (\worldChange scoreSoFar ->
-                scoreSoFar
+                worldChange
             )
             zeroScore
 
