@@ -45,17 +45,9 @@ update msg model =
     ( (), Cmd.none )
 
 
-
--- SUBSCRIPTIONS
-
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
-
-
-
--- VIEW
 
 
 viewDocument : Model -> Browser.Document Msg
