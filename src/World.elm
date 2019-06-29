@@ -156,11 +156,6 @@ emojiFromResource resource =
             "🏢"
 
 
-thing : String -> Html msg
-thing string =
-    Html.div [] [ Html.text string ]
-
-
 aggregate : World -> WorldChange
 aggregate world =
     world
