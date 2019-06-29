@@ -4,21 +4,26 @@ import Html exposing (Html)
 
 
 type alias World =
-    List (List (Maybe ()))
+    { nature : Int
+    , crops : Int
+    , cities : Int
+    }
 
 
 init : World
 init =
-    [ [ Nothing, Nothing, Nothing ]
-    , [ Nothing, Nothing, Nothing ]
-    , [ Nothing, Nothing, Nothing ]
-    ]
+    { nature = 0
+    , crops = 0
+    , cities = 0
+    }
 
 
 view : World -> Html msg
 view world =
-    Html.text "🏔️"
-
-
-
--- 🏔️
+    Html.div []
+        (List.map (\string -> Html.div [] [ Html.text string ])
+            [ "🌳 -> 0"
+            , "🌾 -> 0"
+            , "🏢 -> 0"
+            ]
+        )

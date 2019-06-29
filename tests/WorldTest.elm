@@ -13,8 +13,8 @@ suite =
             \() ->
                 World.init
                     |> Expect.equal
-                        [ [ Nothing, Nothing, Nothing ]
-                        , [ Nothing, Nothing, Nothing ]
-                        , [ Nothing, Nothing, Nothing ]
-                        ]
+                        { nature = 0
+                        , crops = 0
+                        , cities = 0
+                        }
         ]
