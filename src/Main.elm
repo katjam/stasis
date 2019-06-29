@@ -112,11 +112,15 @@ viewDocument model =
 
 view : Model -> Html Msg
 view model =
-    div []
+    div
+        [ Html.Attributes.style "font-size" "50px"
+        ]
         [ model.world
             |> World.view model.stagedWorldChange
             |> Html.map StageResource
         , Html.button
-            [ Html.Events.onClick ChangeTheWorld ]
+            [ Html.Events.onClick ChangeTheWorld
+            , Html.Attributes.style "font-size" "40px"
+            ]
             [ text "Change the World! 🌏 🙌" ]
         ]

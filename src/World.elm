@@ -1,6 +1,7 @@
 module World exposing (AddResource(..), World, WorldChange, aggregate, init, score, view)
 
 import Html exposing (..)
+import Html.Attributes
 import Html.Events
 
 
@@ -104,6 +105,7 @@ resourceView resourceMsg stagedWorldChange world =
             |> Html.text
         , Html.button
             [ Html.Events.onClick resourceMsg
+            , Html.Attributes.style "font-size" "40px"
             ]
             [ text "+"
             ]
