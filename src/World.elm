@@ -83,11 +83,15 @@ view stagedWorldChange world =
                     ++ String.fromInt
                         stagedWorldChange.nature
                     ++ ")"
-                , "🌾 -> 0 ("
+                , "🌾 -> "
+                    ++ String.fromInt (aggregate world |> .crops)
+                    ++ " ("
                     ++ String.fromInt
                         stagedWorldChange.crops
                     ++ ")"
-                , "🏢 -> 0 ("
+                , "🏢 -> "
+                    ++ String.fromInt (aggregate world |> .cities)
+                    ++ " ("
                     ++ String.fromInt
                         stagedWorldChange.cities
                     ++ ")"

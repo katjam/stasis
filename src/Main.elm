@@ -64,6 +64,8 @@ stageWorldChange model =
             , crops = 0
             , nature = 0
             }
+        , world =
+            model.world ++ [ model.stagedWorldChange ]
     }
 
 
