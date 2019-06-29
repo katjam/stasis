@@ -1,6 +1,7 @@
-module World exposing (World, WorldChange, aggregate, init, score, view)
+module World exposing (AddResource(..), World, WorldChange, aggregate, init, score, view)
 
-import Html exposing (Html)
+import Html exposing (..)
+import Html.Events
 
 
 type alias World =
@@ -72,7 +73,7 @@ scoreForWorldChange worldChange =
     }
 
 
-view : WorldChange -> World -> Html msg
+view : WorldChange -> World -> Html AddResource
 view stagedWorldChange world =
     Html.div []
         [ scoreView (score world)
@@ -82,7 +83,13 @@ view stagedWorldChange world =
         ]
 
 
-resourceView : String -> (WorldChange -> Int) -> WorldChange -> World -> Html msg
+type AddResource
+    = Nature
+    | Crop
+    | City
+
+
+resourceView : String -> (WorldChange -> Int) -> WorldChange -> World -> Html AddResource
 resourceView emoji getter stagedWorldChange world =
     Html.div []
         [ emoji
@@ -95,6 +102,11 @@ resourceView emoji getter stagedWorldChange world =
                 )
             ++ ")"
             |> Html.text
+        , Html.button
+            [ Html.Events.onClick Nature
+            ]
+            [ text "+"
+            ]
         ]
 
 

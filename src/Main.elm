@@ -43,17 +43,48 @@ init _ =
     )
 
 
-type alias Msg =
-    ()
+type Msg
+    = ChangeTheWorld
+    | StageResource World.AddResource
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        () ->
+        ChangeTheWorld ->
             ( stageWorldChange model
             , Cmd.none
             )
+
+        StageResource newResource ->
+            let
+                stagedResource =
+                    model.stagedWorldChange
+            in
+            case newResource of
+                World.Nature ->
+                    ( { model
+                        | stagedWorldChange =
+                            { stagedResource | nature = stagedResource.nature + 1 }
+                      }
+                    , Cmd.none
+                    )
+
+                World.Crop ->
+                    ( { model
+                        | stagedWorldChange =
+                            { stagedResource | crops = stagedResource.crops + 1 }
+                      }
+                    , Cmd.none
+                    )
+
+                World.City ->
+                    ( { model
+                        | stagedWorldChange =
+                            { stagedResource | cities = stagedResource.cities + 1 }
+                      }
+                    , Cmd.none
+                    )
 
 
 stageWorldChange : Model -> Model
@@ -82,8 +113,10 @@ viewDocument model =
 view : Model -> Html Msg
 view model =
     div []
-        [ model.world |> World.view model.stagedWorldChange
+        [ model.world
+            |> World.view model.stagedWorldChange
+            |> Html.map StageResource
         , Html.button
-            [ Html.Events.onClick () ]
+            [ Html.Events.onClick ChangeTheWorld ]
             [ text "Change the World! 🌏 🙌" ]
         ]
