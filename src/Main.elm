@@ -115,7 +115,8 @@ view model =
     div
         [ Html.Attributes.style "font-size" "50px"
         ]
-        [ model.world
+        [ turnView model.world
+        , model.world
             |> World.view model.stagedWorldChange
             |> Html.map StageResource
         , Html.button
@@ -124,3 +125,8 @@ view model =
             ]
             [ text "Change the World! 🌏 🙌" ]
         ]
+
+
+turnView : World -> Html msg
+turnView world =
+    text ("Turn number: " ++ String.fromInt (List.length world))
