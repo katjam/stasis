@@ -16,9 +16,9 @@ type alias WorldChange =
 
 init : WorldChange
 init =
-    { nature = 0
-    , crops = 0
-    , cities = 0
+    { nature = 4
+    , crops = 5
+    , cities = 6
     }
 
 
@@ -76,7 +76,9 @@ view stagedWorldChange world =
     Html.div []
         (scoreView (score world)
             :: List.map (\string -> Html.div [] [ Html.text string ])
-                [ "🌳 -> 0 ("
+                [ "🌳 -> "
+                    ++ String.fromInt 0
+                    ++ " ("
                     ++ String.fromInt
                         stagedWorldChange.nature
                     ++ ")"
