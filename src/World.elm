@@ -66,16 +66,16 @@ view world =
 scoreView : Score -> Html msg
 scoreView worldScore =
     Html.div []
-        ([ ( "🍅", worldScore.cropYield )
-         , ( "👷\u{200D}♀️", worldScore.productivity )
-         , ( "🌬", worldScore.co2Offset )
+        ([ ( "🍅", worldScore.cropYield |> String.fromInt )
+         , ( "👷\u{200D}♀️", worldScore.productivity |> String.fromInt )
+         , ( "🌬", worldScore.co2Offset |> String.fromInt )
          ]
             |> List.map
                 (\( key, value ) ->
                     Html.div []
                         [ Html.text
                             (key
-                                ++ (value |> String.fromInt)
+                                ++ value
                             )
                         ]
                 )
