@@ -120,9 +120,37 @@ resourceAvailable resource stagedChange world =
         productivityAvailable =
             score (world ++ [])
                 |> .productivity
-                |> Debug.log "count"
     in
-    productivityAvailable >= productivityNeeded stagedChange resource
+    productivityAvailable
+        >= productivityNeeded stagedChange resource
+        && enoughCropAvailable resource stagedChange world
+
+
+enoughCropAvailable : AddResource -> WorldChange -> World -> Bool
+enoughCropAvailable resource worldChange world =
+    let
+        totalScore =
+            score world
+
+        cropNeeded =
+            cropNeededForResource resource
+                + worldChange.cities
+                + totalScore.cropUse
+    in
+    totalScore.cropYield >= cropNeeded
+
+
+cropNeededForResource : AddResource -> Int
+cropNeededForResource resource =
+    case resource of
+        Nature ->
+            0
+
+        Crop ->
+            0
+
+        City ->
+            1
 
 
 productivityNeeded : WorldChange -> AddResource -> Int

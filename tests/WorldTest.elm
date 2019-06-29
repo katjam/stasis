@@ -89,7 +89,7 @@ suite =
                     , nature = 0
                     }
                     [ { cities = 1
-                      , crops = 0
+                      , crops = 1
                       , nature = 3
                       }
                     ]
@@ -104,6 +104,19 @@ suite =
                     [ { cities = 1
                       , crops = 0
                       , nature = 3
+                      }
+                    ]
+                    |> Expect.equal False
+        , test "resourceAvailable when not enough food resource available" <|
+            \() ->
+                World.resourceAvailable World.City
+                    { cities = 0
+                    , crops = 0
+                    , nature = 0
+                    }
+                    [ { cities = 1
+                      , crops = 1
+                      , nature = 0
                       }
                     ]
                     |> Expect.equal False
