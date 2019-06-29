@@ -19,8 +19,8 @@ type alias WorldChange =
 init : World
 init =
     [ { nature = 0
-      , crops = 0
-      , cities = 0
+      , crops = 1
+      , cities = 1
       }
     ]
 
@@ -120,8 +120,9 @@ resourceAvailable resource stagedChange world =
         productivityAvailable =
             score (world ++ [])
                 |> .productivity
+                |> Debug.log "count"
     in
-    productivityAvailable >= productivityNeeded stagedChange resource
+    productivityAvailable < productivityNeeded stagedChange resource
 
 
 productivityNeeded : WorldChange -> AddResource -> Int
