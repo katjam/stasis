@@ -19,10 +19,11 @@ suite =
                         }
         , test "all zero" <|
             \() ->
-                { cities = 0
-                , crops = 0
-                , nature = 0
-                }
+                [ { cities = 0
+                  , crops = 0
+                  , nature = 0
+                  }
+                ]
                     |> World.score
                     |> Expect.equal
                         { cropYield = 0
@@ -32,10 +33,11 @@ suite =
                         }
         , test "other data" <|
             \() ->
-                { cities = 1
-                , crops = 1
-                , nature = 1
-                }
+                [ { cities = 1
+                  , crops = 1
+                  , nature = 1
+                  }
+                ]
                     |> World.score
                     |> Expect.equal
                         { cropYield = 1
