@@ -14,8 +14,8 @@ suite =
                 World.init
                     |> Expect.equal
                         [ { nature = 0
-                          , crops = 0
-                          , cities = 0
+                          , crops = 1
+                          , cities = 1
                           }
                         ]
         , test "all zero" <|
@@ -93,7 +93,7 @@ suite =
                       , nature = 3
                       }
                     ]
-                    |> Expect.equal True
+                    |> Expect.equal False
         , test "resourceAvailable with non-zero values" <|
             \() ->
                 World.resourceAvailable World.Nature
@@ -106,5 +106,5 @@ suite =
                       , nature = 3
                       }
                     ]
-                    |> Expect.equal False
+                    |> Expect.equal True
         ]
