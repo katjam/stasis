@@ -51,7 +51,20 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         () ->
-            ( model, Cmd.none )
+            ( stageWorldChange model
+            , Cmd.none
+            )
+
+
+stageWorldChange : Model -> Model
+stageWorldChange model =
+    { model
+        | stagedWorldChange =
+            { cities = 0
+            , crops = 0
+            , nature = 0
+            }
+    }
 
 
 subscriptions : Model -> Sub Msg
