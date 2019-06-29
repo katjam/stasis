@@ -107,6 +107,7 @@ resourceView resourceMsg stagedWorldChange world =
         , Html.button
             [ Html.Events.onClick resourceMsg
             , Html.Attributes.style "font-size" "40px"
+            , Html.Attributes.disabled (resourceAvailable resourceMsg stagedWorldChange world)
             ]
             [ text "+"
             ]
