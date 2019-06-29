@@ -14,12 +14,13 @@ type alias WorldChange =
     }
 
 
-init : WorldChange
+init : World
 init =
-    { nature = 3
-    , crops = 2
-    , cities = 1
-    }
+    [ { nature = 3
+      , crops = 2
+      , cities = 1
+      }
+    ]
 
 
 type alias Score =

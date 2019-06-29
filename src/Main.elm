@@ -6,7 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Http
 import Json.Decode exposing (Decoder, field, string)
-import World exposing (WorldChange)
+import World exposing (World, WorldChange)
 
 
 type alias Flags =
@@ -25,6 +25,7 @@ main =
 
 type alias Model =
     { stagedWorldChange : WorldChange
+    , world : World
     }
 
 
@@ -35,6 +36,8 @@ init _ =
             , crops = 2
             , nature = 3
             }
+      , world =
+            World.init
       }
     , Cmd.none
     )
@@ -64,7 +67,7 @@ viewDocument model =
 view : Model -> Html Msg
 view model =
     div []
-        [ [ World.init ] |> World.view model.stagedWorldChange
+        [ model.world |> World.view model.stagedWorldChange
         , Html.button
             [ Html.Events.onClick () ]
             [ text "Change the World! 🌏 🙌" ]
