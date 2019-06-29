@@ -43,7 +43,7 @@ score world =
 
     else
         { cropYield = 0
-        , productivity = 3
+        , productivity = world.cities * 3
         , co2Offset = 0
         }
 
