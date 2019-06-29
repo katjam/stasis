@@ -71,8 +71,8 @@ scoreForWorldChange worldChange =
     }
 
 
-view : World -> Html msg
-view world =
+view : WorldChange -> World -> Html msg
+view stagedWorldChange world =
     Html.div []
         (scoreView (score world)
             :: List.map (\string -> Html.div [] [ Html.text string ])
