@@ -12,6 +12,11 @@ import Json.Decode exposing (Decoder, field, string)
 -- MAIN
 
 
+type alias Flags =
+    ()
+
+
+main : Program Flags Model Msg
 main =
     Browser.document
         { init = init
