@@ -1,16 +1,16 @@
-module World exposing (World, init, score, view)
+module World exposing (WorldChange, init, score, view)
 
 import Html exposing (Html)
 
 
-type alias World =
+type alias WorldChange =
     { nature : Int
     , crops : Int
     , cities : Int
     }
 
 
-init : World
+init : WorldChange
 init =
     { nature = 0
     , crops = 0
@@ -27,7 +27,7 @@ type alias Score =
 
 
 score :
-    World
+    WorldChange
     -> Score
 score world =
     { cropYield = world.crops
@@ -40,7 +40,7 @@ score world =
     }
 
 
-view : World -> Html msg
+view : WorldChange -> Html msg
 view world =
     Html.div []
         (scoreView (score world)

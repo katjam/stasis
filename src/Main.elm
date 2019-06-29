@@ -9,10 +9,6 @@ import Json.Decode exposing (Decoder, field, string)
 import World
 
 
-
--- MAIN
-
-
 type alias Flags =
     ()
 
