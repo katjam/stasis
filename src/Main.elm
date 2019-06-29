@@ -6,6 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Http
 import Json.Decode exposing (Decoder, field, string)
+import World
 
 
 
@@ -85,10 +86,7 @@ viewDocument model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ h2 [] [ text "Random Cats" ]
-        , viewGif model
-        ]
+    World.init |> World.view
 
 
 viewGif : Model -> Html Msg
