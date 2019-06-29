@@ -113,6 +113,11 @@ resourceView resourceMsg stagedWorldChange world =
         ]
 
 
+resourceAvailable : AddResource -> WorldChange -> World -> Bool
+resourceAvailable resource stagedChange world =
+    False
+
+
 laborForResource : AddResource -> String
 laborForResource resourceMsg =
     ((case resourceMsg of
