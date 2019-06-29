@@ -38,9 +38,29 @@ score world =
 view : World -> Html msg
 view world =
     Html.div []
-        (List.map (\string -> Html.div [] [ Html.text string ])
-            [ "🌳 -> 0"
-            , "🌾 -> 0"
-            , "🏢 -> 0"
-            ]
+        (scoreView (score world)
+            :: List.map (\string -> Html.div [] [ Html.text string ])
+                [ "🌳 -> 0"
+                , "🌾 -> 0"
+                , "🏢 -> 0"
+                ]
+        )
+
+
+scoreView : Score -> Html msg
+scoreView worldScore =
+    Html.div []
+        ([ ( "🍅", worldScore.cropYield )
+         , ( "👷\u{200D}♀️", worldScore.productivity )
+         , ( "🌬", worldScore.co2Offset )
+         ]
+            |> List.map
+                (\( key, value ) ->
+                    Html.div []
+                        [ Html.text
+                            (key
+                                ++ (value |> String.fromInt)
+                            )
+                        ]
+                )
         )
