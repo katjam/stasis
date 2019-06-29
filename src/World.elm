@@ -30,25 +30,11 @@ score :
     World
     -> Score
 score world =
-    if
-        world
-            == { cities = 0
-               , crops = 0
-               , nature = 0
-               }
-    then
-        { cropYield = 0
-        , cropUse = 0
-        , productivity = 0
-        , co2Offset = 0
-        }
-
-    else
-        { cropYield = world.crops
-        , cropUse = world.cities
-        , productivity = world.cities * 3
-        , co2Offset = 0
-        }
+    { cropYield = world.crops
+    , cropUse = world.cities
+    , productivity = world.cities * 3
+    , co2Offset = 0
+    }
 
 
 view : World -> Html msg
