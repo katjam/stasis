@@ -75,28 +75,32 @@ scoreForWorldChange worldChange =
 view : WorldChange -> World -> Html msg
 view stagedWorldChange world =
     Html.div []
-        (scoreView (score world)
-            :: List.map (\string -> Html.div [] [ Html.text string ])
-                [ "🌳 -> "
-                    ++ String.fromInt (aggregate world |> .nature)
-                    ++ " ("
-                    ++ String.fromInt
-                        stagedWorldChange.nature
-                    ++ ")"
-                , "🌾 -> "
-                    ++ String.fromInt (aggregate world |> .crops)
-                    ++ " ("
-                    ++ String.fromInt
-                        stagedWorldChange.crops
-                    ++ ")"
-                , "🏢 -> "
-                    ++ String.fromInt (aggregate world |> .cities)
-                    ++ " ("
-                    ++ String.fromInt
-                        stagedWorldChange.cities
-                    ++ ")"
-                ]
-        )
+        [ scoreView (score world)
+        , thing2 "🌳" .nature stagedWorldChange world
+        , thing2 "🌾" .crops stagedWorldChange world
+        , thing2 "🏢" .cities stagedWorldChange world
+        ]
+
+
+thing2 : String -> (WorldChange -> Int) -> WorldChange -> World -> Html msg
+thing2 emoji getter stagedWorldChange world =
+    [ emoji
+        ++ " -> "
+        ++ String.fromInt (aggregate world |> getter)
+        ++ " ("
+        ++ String.fromInt
+            (stagedWorldChange
+                |> getter
+            )
+        ++ ")"
+        |> Html.text
+    ]
+        |> Html.div []
+
+
+thing : String -> Html msg
+thing string =
+    Html.div [] [ Html.text string ]
 
 
 aggregate : World -> WorldChange
