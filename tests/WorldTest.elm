@@ -17,4 +17,13 @@ suite =
                         , crops = 0
                         , cities = 0
                         }
+        , test "initial score" <|
+            \() ->
+                World.init
+                    |> World.score
+                    |> Expect.equal
+                        { cropYield = 2
+                        , productivity = 2
+                        , co2Offset = 0
+                        }
         ]
