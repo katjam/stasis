@@ -76,14 +76,14 @@ view : WorldChange -> World -> Html msg
 view stagedWorldChange world =
     Html.div []
         [ scoreView (score world)
-        , thing2 "🌳" .nature stagedWorldChange world
-        , thing2 "🌾" .crops stagedWorldChange world
-        , thing2 "🏢" .cities stagedWorldChange world
+        , resourceView "🌳" .nature stagedWorldChange world
+        , resourceView "🌾" .crops stagedWorldChange world
+        , resourceView "🏢" .cities stagedWorldChange world
         ]
 
 
-thing2 : String -> (WorldChange -> Int) -> WorldChange -> World -> Html msg
-thing2 emoji getter stagedWorldChange world =
+resourceView : String -> (WorldChange -> Int) -> WorldChange -> World -> Html msg
+resourceView emoji getter stagedWorldChange world =
     Html.div []
         [ emoji
             ++ " -> "
