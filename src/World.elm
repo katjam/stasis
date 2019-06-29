@@ -77,9 +77,9 @@ view : WorldChange -> World -> Html AddResource
 view stagedWorldChange world =
     Html.div []
         [ scoreView (score world)
-        , resourceView "🌳" .nature stagedWorldChange world
-        , resourceView "🌾" .crops stagedWorldChange world
-        , resourceView "🏢" .cities stagedWorldChange world
+        , resourceView Nature "🌳" .nature stagedWorldChange world
+        , resourceView Crop "🌾" .crops stagedWorldChange world
+        , resourceView City "🏢" .cities stagedWorldChange world
         ]
 
 
@@ -89,10 +89,10 @@ type AddResource
     | City
 
 
-resourceView : String -> (WorldChange -> Int) -> WorldChange -> World -> Html AddResource
-resourceView emoji getter stagedWorldChange world =
+resourceView : AddResource -> String -> (WorldChange -> Int) -> WorldChange -> World -> Html AddResource
+resourceView resourceMsg emoji getter stagedWorldChange world =
     Html.div []
-        [ emoji
+        [ emojiFromResource resourceMsg
             ++ " -> "
             ++ String.fromInt (aggregate world |> getter)
             ++ " ("
@@ -103,11 +103,24 @@ resourceView emoji getter stagedWorldChange world =
             ++ ")"
             |> Html.text
         , Html.button
-            [ Html.Events.onClick Nature
+            [ Html.Events.onClick resourceMsg
             ]
             [ text "+"
             ]
         ]
+
+
+emojiFromResource : AddResource -> String
+emojiFromResource resource =
+    case resource of
+        Nature ->
+            "🌳"
+
+        Crop ->
+            "🌾"
+
+        City ->
+            "🏢"
 
 
 thing : String -> Html msg
