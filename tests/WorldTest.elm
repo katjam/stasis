@@ -45,4 +45,22 @@ suite =
                         , productivity = 3
                         , co2Offset = 0
                         }
+        , test "combine multiple scores" <|
+            \() ->
+                [ { cities = 1
+                  , crops = 1
+                  , nature = 1
+                  }
+                , { cities = 0
+                  , crops = 0
+                  , nature = 3
+                  }
+                ]
+                    |> World.score
+                    |> Expect.equal
+                        { cropYield = 1
+                        , cropUse = 1
+                        , productivity = 3
+                        , co2Offset = 6
+                        }
         ]

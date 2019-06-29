@@ -37,7 +37,19 @@ score world =
     List.map scoreForWorldChange world
         |> List.foldl
             (\worldChange scoreSoFar ->
-                worldChange
+                { co2Offset =
+                    scoreSoFar.co2Offset
+                        + worldChange.co2Offset
+                , cropYield =
+                    scoreSoFar.cropYield
+                        + worldChange.cropYield
+                , productivity =
+                    scoreSoFar.productivity
+                        + worldChange.productivity
+                , cropUse =
+                    scoreSoFar.cropUse
+                        + worldChange.cropUse
+                }
             )
             zeroScore
 
