@@ -81,4 +81,17 @@ suite =
                         , crops = 7
                         , nature = 9
                         }
+        , test "resourceAvailable" <|
+            \() ->
+                World.resourceAvailable World.Nature
+                    { cities = 0
+                    , crops = 0
+                    , nature = 0
+                    }
+                    [ { cities = 0
+                      , crops = 0
+                      , nature = 0
+                      }
+                    ]
+                    |> Expect.equal True
         ]

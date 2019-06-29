@@ -1,4 +1,4 @@
-module World exposing (AddResource(..), World, WorldChange, aggregate, init, score, view)
+module World exposing (AddResource(..), World, WorldChange, aggregate, init, resourceAvailable, score, view)
 
 import Html exposing (..)
 import Html.Attributes
@@ -115,7 +115,7 @@ resourceView resourceMsg stagedWorldChange world =
 
 resourceAvailable : AddResource -> WorldChange -> World -> Bool
 resourceAvailable resource stagedChange world =
-    False
+    True
 
 
 laborForResource : AddResource -> String
