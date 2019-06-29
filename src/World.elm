@@ -77,7 +77,7 @@ view stagedWorldChange world =
         (scoreView (score world)
             :: List.map (\string -> Html.div [] [ Html.text string ])
                 [ "🌳 -> "
-                    ++ String.fromInt 0
+                    ++ String.fromInt (aggregate world |> .nature)
                     ++ " ("
                     ++ String.fromInt
                         stagedWorldChange.nature
@@ -92,6 +92,11 @@ view stagedWorldChange world =
                     ++ ")"
                 ]
         )
+
+
+aggregate : World -> WorldChange
+aggregate world =
+    { nature = 0, crops = 0, cities = 0 }
 
 
 scoreView : Score -> Html msg
