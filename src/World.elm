@@ -77,10 +77,17 @@ view stagedWorldChange world =
         (scoreView (score world)
             :: List.map (\string -> Html.div [] [ Html.text string ])
                 [ "🌳 -> 0 ("
-                    ++ String.fromInt stagedWorldChange.nature
+                    ++ String.fromInt
+                        stagedWorldChange.nature
                     ++ ")"
-                , "🌾 -> 0 (0)"
-                , "🏢 -> 0 (0)"
+                , "🌾 -> 0 ("
+                    ++ String.fromInt
+                        stagedWorldChange.crops
+                    ++ ")"
+                , "🏢 -> 0 ("
+                    ++ String.fromInt
+                        stagedWorldChange.cities
+                    ++ ")"
                 ]
         )
 
