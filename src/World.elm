@@ -96,9 +96,25 @@ view stagedWorldChange world =
 
 aggregate : World -> WorldChange
 aggregate world =
-    { cities = 5
-    , crops = 7
-    , nature = 9
+    world
+        |> List.foldl aggregatorThing
+            { cities = 0
+            , crops = 0
+            , nature = 0
+            }
+
+
+aggregatorThing : WorldChange -> WorldChange -> WorldChange
+aggregatorThing worldChange changeSoFar =
+    { cities =
+        worldChange.cities
+            + changeSoFar.cities
+    , crops =
+        worldChange.crops
+            + changeSoFar.crops
+    , nature =
+        worldChange.nature
+            + changeSoFar.nature
     }
 
 
