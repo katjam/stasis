@@ -22,6 +22,7 @@ type alias Score =
     { co2Offset : Int
     , cropYield : Int
     , productivity : Int
+    , cropUse : Int
     }
 
 
@@ -37,12 +38,14 @@ score world =
                }
     then
         { cropYield = 0
+        , cropUse = 0
         , productivity = 0
         , co2Offset = 0
         }
 
     else
         { cropYield = 0
+        , cropUse = 1
         , productivity = world.cities * 3
         , co2Offset = 0
         }
