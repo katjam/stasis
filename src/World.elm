@@ -1,4 +1,4 @@
-module World exposing (World, WorldChange, init, score, view)
+module World exposing (World, WorldChange, aggregate, init, score, view)
 
 import Html exposing (Html)
 
@@ -16,9 +16,9 @@ type alias WorldChange =
 
 init : WorldChange
 init =
-    { nature = 4
-    , crops = 5
-    , cities = 6
+    { nature = 0
+    , crops = 0
+    , cities = 0
     }
 
 
@@ -96,7 +96,10 @@ view stagedWorldChange world =
 
 aggregate : World -> WorldChange
 aggregate world =
-    { nature = 0, crops = 0, cities = 0 }
+    { cities = 5
+    , crops = 7
+    , nature = 9
+    }
 
 
 scoreView : Score -> Html msg

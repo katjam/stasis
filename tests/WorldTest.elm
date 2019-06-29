@@ -63,4 +63,21 @@ suite =
                         , productivity = 3
                         , co2Offset = 6
                         }
+        , test "aggregate score" <|
+            \() ->
+                [ { cities = 1
+                  , crops = 2
+                  , nature = 3
+                  }
+                , { cities = 4
+                  , crops = 5
+                  , nature = 6
+                  }
+                ]
+                    |> World.aggregate
+                    |> Expect.equal
+                        { cities = 5
+                        , crops = 7
+                        , nature = 9
+                        }
         ]
