@@ -94,7 +94,7 @@ resourceView : AddResource -> WorldChange -> World -> Html AddResource
 resourceView resourceMsg stagedWorldChange world =
     Html.div []
         [ emojiFromResource resourceMsg
-            ++ " -> "
+            ++ " "
             ++ String.fromInt (aggregate world |> getGetter resourceMsg)
             ++ " ("
             ++ String.fromInt
@@ -183,6 +183,7 @@ scoreView worldScore =
                     Html.div []
                         [ Html.text
                             (key
+                                ++ " "
                                 ++ value
                             )
                         ]
