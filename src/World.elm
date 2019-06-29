@@ -84,18 +84,18 @@ view stagedWorldChange world =
 
 thing2 : String -> (WorldChange -> Int) -> WorldChange -> World -> Html msg
 thing2 emoji getter stagedWorldChange world =
-    [ emoji
-        ++ " -> "
-        ++ String.fromInt (aggregate world |> getter)
-        ++ " ("
-        ++ String.fromInt
-            (stagedWorldChange
-                |> getter
-            )
-        ++ ")"
-        |> Html.text
-    ]
-        |> Html.div []
+    Html.div []
+        [ emoji
+            ++ " -> "
+            ++ String.fromInt (aggregate world |> getter)
+            ++ " ("
+            ++ String.fromInt
+                (stagedWorldChange
+                    |> getter
+                )
+            ++ ")"
+            |> Html.text
+        ]
 
 
 thing : String -> Html msg
