@@ -101,7 +101,8 @@ resourceView resourceMsg stagedWorldChange world =
                 (stagedWorldChange
                     |> getGetter resourceMsg
                 )
-            ++ ")"
+            ++ ") "
+            ++ laborForResource resourceMsg
             |> Html.text
         , Html.button
             [ Html.Events.onClick resourceMsg
@@ -110,6 +111,23 @@ resourceView resourceMsg stagedWorldChange world =
             [ text "+"
             ]
         ]
+
+
+laborForResource : AddResource -> String
+laborForResource resourceMsg =
+    ((case resourceMsg of
+        Nature ->
+            1
+
+        Crop ->
+            2
+
+        City ->
+            3
+     )
+        |> String.fromInt
+    )
+        ++ " "
 
 
 getGetter : AddResource -> (WorldChange -> Int)
