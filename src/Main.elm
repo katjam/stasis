@@ -31,9 +31,9 @@ type alias Model =
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { stagedWorldChange =
-            { cities = 0
-            , crops = 0
-            , nature = 0
+            { cities = 1
+            , crops = 2
+            , nature = 3
             }
       }
     , Cmd.none
