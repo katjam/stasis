@@ -93,7 +93,7 @@ suite =
                       , nature = 3
                       }
                     ]
-                    |> Expect.equal False
+                    |> Expect.equal True
         , test "resourceAvailable with non-zero values" <|
             \() ->
                 World.resourceAvailable World.Nature
@@ -106,5 +106,5 @@ suite =
                       , nature = 3
                       }
                     ]
-                    |> Expect.equal True
+                    |> Expect.equal False
         ]

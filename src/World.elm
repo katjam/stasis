@@ -107,7 +107,7 @@ resourceView resourceMsg stagedWorldChange world =
         , Html.button
             [ Html.Events.onClick resourceMsg
             , Html.Attributes.style "font-size" "40px"
-            , Html.Attributes.disabled (resourceAvailable resourceMsg stagedWorldChange world)
+            , Html.Attributes.disabled (not (resourceAvailable resourceMsg stagedWorldChange world))
             ]
             [ text "+"
             ]
@@ -122,7 +122,7 @@ resourceAvailable resource stagedChange world =
                 |> .productivity
                 |> Debug.log "count"
     in
-    productivityAvailable < productivityNeeded stagedChange resource
+    productivityAvailable >= productivityNeeded stagedChange resource
 
 
 productivityNeeded : WorldChange -> AddResource -> Int
