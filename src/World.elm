@@ -3,6 +3,10 @@ module World exposing (WorldChange, init, score, view)
 import Html exposing (Html)
 
 
+type alias World =
+    List WorldChange
+
+
 type alias WorldChange =
     { nature : Int
     , crops : Int
