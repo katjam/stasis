@@ -53,4 +53,4 @@ viewDocument model =
 
 view : Model -> Html Msg
 view model =
-    World.init |> World.view
+    [ World.init ] |> World.view

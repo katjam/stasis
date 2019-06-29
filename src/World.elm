@@ -31,20 +31,35 @@ type alias Score =
 
 
 score :
-    WorldChange
+    World
     -> Score
 score world =
-    { cropYield = world.crops
-    , cropUse = world.cities
-    , productivity = world.cities * 3
+    List.map scoreForWorldChange world
+        |> List.foldl
+            (\worldChange scoreSoFar ->
+                scoreSoFar
+            )
+            zeroScore
+
+
+zeroScore : Score
+zeroScore =
+    { co2Offset = 0, cropYield = 0, productivity = 0, cropUse = 0 }
+
+
+scoreForWorldChange : WorldChange -> Score
+scoreForWorldChange worldChange =
+    { cropYield = worldChange.crops
+    , cropUse = worldChange.cities
+    , productivity = worldChange.cities * 3
     , co2Offset =
-        world.nature
+        worldChange.nature
             * 2
-            - (world.cities + world.crops)
+            - (worldChange.cities + worldChange.crops)
     }
 
 
-view : WorldChange -> Html msg
+view : World -> Html msg
 view world =
     Html.div []
         (scoreView (score world)
