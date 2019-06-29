@@ -52,7 +52,7 @@ subscriptions model =
 
 viewDocument : Model -> Browser.Document Msg
 viewDocument model =
-    { title = "Some cats", body = [ view model ] }
+    { title = "Stasis", body = [ view model ] }
 
 
 view : Model -> Html Msg
