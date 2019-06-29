@@ -16,9 +16,9 @@ type alias WorldChange =
 
 init : World
 init =
-    [ { nature = 3
-      , crops = 2
-      , cities = 1
+    [ { nature = 0
+      , crops = 0
+      , cities = 0
       }
     ]
 
