@@ -9,7 +9,7 @@ import World
 suite : Test
 suite =
     describe "World"
-        [ test "prints empty grid" <|
+        [ test "initial state" <|
             \() ->
                 World.init
                     |> Expect.equal
@@ -17,13 +17,28 @@ suite =
                         , crops = 0
                         , cities = 0
                         }
-        , test "initial score" <|
+        , test "all zero" <|
             \() ->
-                World.init
+                { cities = 0
+                , crops = 0
+                , nature = 0
+                }
                     |> World.score
                     |> Expect.equal
-                        { cropYield = 2
-                        , productivity = 2
+                        { cropYield = 0
+                        , productivity = 0
+                        , co2Offset = 0
+                        }
+        , test "other data" <|
+            \() ->
+                { cities = 1
+                , crops = 1
+                , nature = 1
+                }
+                    |> World.score
+                    |> Expect.equal
+                        { cropYield = 0
+                        , productivity = 3
                         , co2Offset = 0
                         }
         ]
