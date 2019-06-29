@@ -38,7 +38,7 @@ suite =
                 }
                     |> World.score
                     |> Expect.equal
-                        { cropYield = 0
+                        { cropYield = 1
                         , cropUse = 1
                         , productivity = 3
                         , co2Offset = 0

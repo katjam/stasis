@@ -44,8 +44,8 @@ score world =
         }
 
     else
-        { cropYield = 0
-        , cropUse = 1
+        { cropYield = world.crops
+        , cropUse = world.cities
         , productivity = world.cities * 3
         , co2Offset = 0
         }
