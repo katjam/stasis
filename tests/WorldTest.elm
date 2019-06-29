@@ -81,17 +81,30 @@ suite =
                         , crops = 7
                         , nature = 9
                         }
-        , test "resourceAvailable" <|
+        , test "resourceAvailable want to build nothing" <|
             \() ->
                 World.resourceAvailable World.Nature
                     { cities = 0
                     , crops = 0
                     , nature = 0
                     }
-                    [ { cities = 0
+                    [ { cities = 1
                       , crops = 0
-                      , nature = 0
+                      , nature = 3
                       }
                     ]
                     |> Expect.equal True
+        , test "resourceAvailable with non-zero values" <|
+            \() ->
+                World.resourceAvailable World.Nature
+                    { cities = 1
+                    , crops = 0
+                    , nature = 0
+                    }
+                    [ { cities = 1
+                      , crops = 0
+                      , nature = 3
+                      }
+                    ]
+                    |> Expect.equal False
         ]

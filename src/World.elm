@@ -115,7 +115,36 @@ resourceView resourceMsg stagedWorldChange world =
 
 resourceAvailable : AddResource -> WorldChange -> World -> Bool
 resourceAvailable resource stagedChange world =
-    True
+    let
+        productivityAvailable =
+            score (world ++ [])
+                |> .productivity
+    in
+    productivityAvailable >= productivityNeeded stagedChange resource
+
+
+productivityNeeded : WorldChange -> AddResource -> Int
+productivityNeeded stagedChange resource =
+    stagedChange.cities
+        * 3
+        + stagedChange.crops
+        * 2
+        + stagedChange.nature
+        * 1
+        + (case resource of
+            City ->
+                3
+
+            Crop ->
+                2
+
+            Nature ->
+                1
+          )
+
+
+
+-- 4
 
 
 laborForResource : AddResource -> String
