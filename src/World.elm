@@ -33,7 +33,10 @@ score world =
     { cropYield = world.crops
     , cropUse = world.cities
     , productivity = world.cities * 3
-    , co2Offset = 0
+    , co2Offset =
+        world.nature
+            * 2
+            - (world.cities + world.crops)
     }
 
 
