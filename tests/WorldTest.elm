@@ -13,10 +13,11 @@ suite =
             \() ->
                 World.init
                     |> Expect.equal
-                        { nature = 0
-                        , crops = 0
-                        , cities = 0
-                        }
+                        [ { nature = 0
+                          , crops = 0
+                          , cities = 0
+                          }
+                        ]
         , test "all zero" <|
             \() ->
                 [ { cities = 0
