@@ -1,4 +1,4 @@
-module World exposing (WorldChange, init, score, view)
+module World exposing (World, WorldChange, init, score, view)
 
 import Html exposing (Html)
 

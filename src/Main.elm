@@ -6,7 +6,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Http
 import Json.Decode exposing (Decoder, field, string)
-import World
+import World exposing (WorldChange)
 
 
 type alias Flags =
@@ -24,12 +24,20 @@ main =
 
 
 type alias Model =
-    ()
+    { stagedWorldChange : WorldChange
+    }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( (), Cmd.none )
+    ( { stagedWorldChange =
+            { cities = 0
+            , crops = 0
+            , nature = 0
+            }
+      }
+    , Cmd.none
+    )
 
 
 type alias Msg =
@@ -38,7 +46,7 @@ type alias Msg =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( (), Cmd.none )
+    ( model, Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
