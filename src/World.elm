@@ -66,7 +66,11 @@ view world =
 scoreView : Score -> Html msg
 scoreView worldScore =
     Html.div []
-        ([ ( "🍅", worldScore.cropYield |> String.fromInt )
+        ([ ( "🍅"
+           , (worldScore.cropUse |> String.fromInt)
+                ++ "/"
+                ++ (worldScore.cropYield |> String.fromInt)
+           )
          , ( "👷\u{200D}♀️", worldScore.productivity |> String.fromInt )
          , ( "🌬", worldScore.co2Offset |> String.fromInt )
          ]
